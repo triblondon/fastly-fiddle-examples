@@ -1,0 +1,34 @@
+<html>
+<body>
+
+<!-- include -->
+<esi:include src="/fastly-fiddle-examples/esi/child1.html" />
+
+<!-- include fail and fallback -->
+<esi:include src="/i-do-not-exist.html" alt="/fastly-fiddle-examples/esi/child1.html" />
+
+<!-- inline -->
+<esi:inline name="/inline-child.html" fetchable="no">Test inline ESI</esi:inline>
+<esi:include src="/inline-child.html" onerror="continue" />
+
+<!-- choose/when/otherwise -->
+<esi:choose> 
+    <esi:when test="$(HTTP_HOST)=='a.example.com'"> 
+        <esi:include src="/fastly-fiddle-examples/esi/child1.html"/>
+    </esi:when> 
+    <esi:otherwise> 
+        <esi:include src="/fastly-fiddle-examples/esi/child2.html"/>
+    </esi:otherwise>
+</esi:choose>
+
+<!-- comment -->
+<esi:comment text="This is a comment"> Comment tags should not have block content.  What happens if they do?</esi:comment>
+
+<!-- remove -->
+<esi:remove>Remove this</esi:remove>
+
+<!-- vars -->
+<esi:vars><img src="http://www.example.com/$(HTTP_HOST)/hello.gif"/ ></esi:vars>
+
+</body>
+</html>
