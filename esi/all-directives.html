@@ -5,7 +5,10 @@
 <esi:include src="/fastly-fiddle-examples/esi/child1.html" />
 
 <!-- include fail and fallback -->
-<esi:include src="/i-do-not-exist.html" alt="/fastly-fiddle-examples/esi/child1.html" />
+<esi:include src="/status-404.html" alt="/fastly-fiddle-examples/esi/child1.html" />
+    
+<!-- include fail -->
+<esi:include src="/status-500.html" />
 
 <!-- inline -->
 Definition: [<esi:inline name="/inline-child.html" fetchable="no">Test inline ESI</esi:inline>]
